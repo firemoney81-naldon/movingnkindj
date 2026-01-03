@@ -1,23 +1,346 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title>Home</title>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <!--
-      Need a visual blank slate?
-      Remove all code in `styles.css`!
-    -->
-    <link rel="stylesheet" href="styles.css" />
-    <script type="module" src="script.js"></script>
-  </head>
-  <body>
-    <nav>
-      <a href="/" aria-current="page">Home</a>
-      <a href="/page2.html">Other page</a>
+
+  <!-- Schema.org LocalBusiness 마크업(JSON-LD) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "MovingCompany",
+    "name": "6톤 포장이사 견적 비교 센터",
+    "image": "https://도메인/logo-6ton.png",
+    "url": "https://도메인/6ton-moving",
+    "telephone": "031-123-4567",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "경기도 평택시 ○○로 ○○",
+      "addressLocality": "평택시",
+      "addressRegion": "경기",
+      "postalCode": "17900",
+      "addressCountry": "KR"
+    },
+    "areaServed": [
+      { "@type": "City", "name": "서울시" },
+      { "@type": "City", "name": "부산시" },
+      { "@type": "City", "name": "대구시" },
+      { "@type": "City", "name": "인천시" },
+      { "@type": "City", "name": "광주시" },
+      { "@type": "City", "name": "대전시" },
+      { "@type": "City", "name": "울산시" },
+      { "@type": "City", "name": "세종시" },
+      { "@type": "City", "name": "경기도" }
+    ],
+    "priceRange": "₩₩₩₩",
+    "description": "6톤 이사 비용은 3~4인 가구 포장이사 견적의 핵심입니다. 짐량 기준, 예상 비용, 체크리스트를 상세히 분석하여 합리적인 이사 계획을 도와드립니다."
+  }
+  </script>
+
+  <!-- Google Fonts - Noto Sans KR -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;700;900&display=swap">
+
+  <style>
+    /* 기본 스타일 재설정 */
+    body { font-family: 'Noto Sans KR', sans-serif; margin:0; padding:0; background:#f0f4f8; color:#333; line-height:1.7; font-size:16px; }
+    header { background:#ffffff; padding:40px 20px; text-align:center; box-shadow:0 4px 12px rgba(0,0,0,0.05); }
+    main { max-width:960px; margin:20px auto; padding:20px; background:#ffffff; border-radius:12px; box-shadow:0 4px 12px rgba(0,0,0,0.05); }
+    section { margin-bottom:40px; }
+    nav ul { list-style:none; padding:0; margin:20px 0; display:flex; flex-wrap:wrap; justify-content:center; }
+    nav li { margin:5px 10px; }
+    nav a { text-decoration:none; color:#0b3d91; font-weight:700; padding:10px 15px; background:#e8f0fe; border-radius:8px; transition:background-color 0.3s ease; }
+    nav a:hover { background:#d0e0ff; }
+
+    /* 헤더 및 타이틀 스타일 */
+    h1 { font-size:2.8rem; color:#0b3d91; margin-bottom:10px; font-weight:900; line-height:1.3; }
+    h2 { font-size:2.2rem; color:#1a477d; border-bottom:3px solid #a3c4ff; padding-bottom:10px; margin-top:30px; margin-bottom:20px; font-weight:700; }
+    h3 { font-size:1.6rem; color:#2c5e9f; margin-top:25px; margin-bottom:15px; font-weight:700; }
+
+    /* 텍스트 스타일 */
+    p { margin-bottom:15px; font-size:1rem; color:#444; }
+    ul, ol { padding-left:25px; margin-bottom:15px; color:#555; }
+    li { margin-bottom:8px; line-height:1.8; }
+    strong { color:#0b3d91; font-weight:700; }
+    blockquote { border-left:4px solid #a3c4ff; padding-left:15px; margin:20px 0; font-style:italic; color:#666; background:#f8faff; border-radius:4px; }
+    a { color:#0b3d91; text-decoration:none; transition:color 0.3s ease; }
+    a:hover { color:#4285f4; text-decoration:underline; }
+
+    /* 표 스타일 */
+    table { width:100%; border-collapse: separate; border-spacing:0; margin:25px 0; box-shadow:0 2px 8px rgba(0,0,0,0.05); border-radius:8px; overflow:hidden; }
+    th, td { padding:15px; text-align:left; border-bottom:1px solid #e0e6f0; }
+    th { background:#a3c4ff; color:#fff; font-weight:700; text-align:center; }
+    tr:nth-child(even) { background-color:#f8faff; }
+
+    /* CTA 버튼 스타일 */
+    .btn-cta {
+      display:inline-block;
+      padding:16px 35px;
+      background:#4285f4;
+      color:#fff;
+      font-weight:700;
+      border:none;
+      border-radius:30px;
+      box-shadow:0 6px 10px rgba(66, 133, 244, 0.3);
+      transition: background-color 0.3s ease, transform 0.2s ease;
+      cursor:pointer;
+      text-decoration:none;
+      font-size:1.1rem;
+      text-align:center;
+      margin-top:20px;
+    }
+    .btn-cta:hover { background:#3367d6; transform:translateY(-2px); }
+
+    /* FAQ 스타일 */
+    .faq-item { margin-bottom:20px; padding:15px; background:#f8faff; border-radius:8px; }
+    .faq-question { font-weight:700; color:#0b3d91; cursor:pointer; font-size:1.1rem; }
+    .faq-answer { display:block; margin-top:10px; padding-left:10px; border-left:2px solid #a3c4ff; font-size:0.95rem; line-height:1.6; color:#555; }
+
+    /* 폼 스타일 */
+    form { background:#f8faff; padding:30px; border-radius:12px; margin-top:30px; border:1px solid #e0e6f0; }
+    form label { display:block; font-weight:700; color:#1a477d; margin-bottom:5px; margin-top:10px; font-size:1rem; }
+    form input[type="text"], form input[type="tel"], form select, form textarea {
+      width:calc(100% - 20px); padding:10px; border:1px solid #ccc; border-radius:6px; font-size:1rem; margin-top:5px;
+    }
+    form .form-group { margin-bottom:15px; }
+    form button[type="submit"] { display:block; width:100%; margin-top:20px; }
+
+    /* 반응형 디자인 */
+    @media (max-width: 768px) {
+      main { margin:10px auto; padding:15px; }
+      h1 { font-size:2.2rem; }
+      h2 { font-size:1.8rem; }
+      h3 { font-size:1.4rem; }
+      nav ul { flex-direction:column; align-items:center; }
+      nav li { margin:5px 0; width:100%; text-align:center; }
+      nav a { display:block; padding:10px 0; }
+      .btn-cta { width:100%; }
+      table, th, td { display:block; width:100%; text-align:left; }
+      th { text-align:left; }
+      tr { margin-bottom:15px; display:block; border:1px solid #e0e6f0; border-radius:8px; }
+      td { border:none; border-bottom:1px solid #eee; }
+      tr:last-child { border-bottom:none; }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>6톤 포장이사 비용 완벽 분석: 견적 비교, 체크리스트, 전문가 팁</h1>
+    <p>2026년 최신 데이터 기반, 합리적인 6톤 이사 비용을 찾는 A to Z 가이드</p>
+    <a class="btn-cta" href="#contact">지금 6톤 이사 견적 문의하기</a>
+  </header>
+
+  <main>
+    <nav aria-label="페이지 내 이동">
+      <ul>
+        <li><a href="#definition">6톤 이사란?</a></li>
+        <li><a href="#pricing">2026년 6톤 이사 비용 분석</a></li>
+        <li><a href="#checklist">필수 체크리스트</a></li>
+        <li><a href="#regional-price">지역별 가격 변동성</a></li>
+        <li><a href="#faq">자주 묻는 질문</a></li>
+        <li><a href="#contact">견적 상담</a></li>
+      </ul>
     </nav>
-    <main>
-      <h1>Home page</h1>
-    </main>
-  </body>
-</html>
+
+    <section id="definition">
+      <h2 id="definition-anchor" class="anchor">6톤 이사란 무엇이며, 짐량 기준은 어떻게 되나요?</h2>
+      <p>6톤 이사는 일반적인 아파트 3룸(방 3개, 거실, 주방) 또는 4룸 규모의 주택에서 진행되는 이사를 의미합니다. 이는 이삿짐의 부피와 무게가 대략 6톤 차량 한 대 분량에 해당한다는 것을 뜻하며, 4인 가족 이상이 거주하는 경우에 주로 해당됩니다. 6톤 이삿짐센터는 단순한 운반을 넘어 가구 분해/조립, 포장/정리, 가전 설치 등 전문적인 포장이사 서비스를 제공합니다.</p>
+      <p><strong>6톤 이사 짐량 기준 (일반적인 3~4인 가구):</strong></p>
+      <ul>
+        <li><strong>가구류:</strong> 침대 2~3개 (퀸사이즈 포함), 4인용 이상 소파, 8인용 식탁, 장롱 1~2개, 서랍장, 책장, TV장 등 대형 가구 다수.</li>
+        <li><strong>가전제품:</strong> 양문형 냉장고, 김치냉장고, 세탁기/건조기 세트, 에어컨 (스탠드형 및 벽걸이), TV, 오븐, 정수기, 공기청정기 등 다수의 생활 가전.</li>
+        <li><strong>생활용품/잡화:</strong> 주방용품, 의류, 서적, 취미용품 등 박스 수십 개 분량 (일반적으로 80~100박스 내외).</li>
+      </ul>
+      <p>6톤 이사는 짐의 양이 많기 때문에, 단순히 용달차 한두 대로 해결할 수 있는 규모가 아닙니다. 짐의 특성에 따라 5톤 차량 1대와 1톤 차량 1대가 동원되거나, 7.5톤 차량 1대가 배정되기도 합니다. 이사 규모가 커질수록 이사 견적의 변동폭이 커지므로, 정확한 견적을 위해 사전에 방문 견적을 받는 것이 중요합니다.</p>
+    </section>
+
+    <section id="pricing">
+      <h2 id="pricing-anchor" class="anchor">2026년 6톤 포장이사 비용 상세 분석</h2>
+      <p>6톤 포장이사 비용은 여러 변수에 따라 크게 달라집니다. 2026년 최신 시장 데이터를 분석해보면, 6톤 포장이사(풀서비스 기준)의 평균 비용은 <strong>120만원에서 200만원</strong> 사이에서 형성되며, 성수기/비수기, 서비스 범위, 지역 등에 따라 이보다 높거나 낮을 수 있습니다. 정확한 비용 산출을 위한 주요 요소를 살펴보겠습니다.</p>
+
+      <h3>이사 비용을 결정하는 주요 변수 5가지</h3>
+      <ol>
+        <li><strong>서비스 유형:</strong> 포장이사(풀서비스), 반포장이사, 일반이사 중 어떤 서비스를 선택하느냐에 따라 비용이 30~50% 차이납니다. 6톤 이사는 짐이 많아 대부분 포장이사를 선택합니다.</li>
+        <li><strong>짐의 양과 특수 품목:</strong> 짐이 6톤을 초과할 경우 추가 비용이 발생합니다. 피아노, 대형 금고, 붙박이장 분해/조립, 에어컨 설치, 벽걸이 TV 이전 설치 등 특수 품목은 별도 요금이 부과됩니다.</li>
+        <li><strong>이사 거리 및 이동 환경:</strong> 이사 거리가 멀어질수록 유류비 및 인건비가 추가됩니다. 또한, 엘리베이터 유무, 사다리차 사용 여부, 층수, 진입로의 협소함 등이 비용에 영향을 미칩니다.</li>
+        <li><strong>인원수 및 차량 대수:</strong> 6톤 이사는 보통 5톤 탑차와 1톤 트럭(혹은 7.5톤 탑차) 1대가 동원되며, 포장 및 운반 인력은 3~5명이 투입됩니다. 인원수가 많아질수록 비용이 증가합니다.</li>
+        <li><strong>이사 날짜:</strong> '손없는 날'이나 주말, 2~3월 이사 성수기는 비수기(평일, 6~8월) 대비 20% 이상 높은 가격이 책정됩니다.</li>
+      </ol>
+
+      <h3>2026년 6톤 이사 서비스 유형별 예상 비용 비교표</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>서비스 유형</th>
+            <th>평균 예상 비용 (비수기 평일 기준)</th>
+            <th>서비스 범위</th>
+            <th>추가 비용 발생 요소</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>6톤 포장이사 (Full Service)</strong></td>
+            <td>120만원 ~ 180만원</td>
+            <td>포장, 운반, 배치, 청소 및 정리, 특수 포장재 포함</td>
+            <td>사다리차, 특수 가구 분해/조립, 에어컨 설치, 폐기물 처리</td>
+          </tr>
+          <tr>
+            <td><strong>6톤 반포장이사 (Half Service)</strong></td>
+            <td>90만원 ~ 140만원</td>
+            <td>주요 가구 포장/운반/정리, 소형 짐(잡화)은 고객 직접 포장/정리</td>
+            <td>고객 준비 비용, 짐량 초과 시 인력 추가, 사다리차</td>
+          </tr>
+          <tr>
+            <td><strong>6톤 일반이사 (운반만)</strong></td>
+            <td>70만원 ~ 100만원</td>
+            <td>운반만 지원 (고객이 전체 포장 및 정리 담당)</td>
+            <td>이사 시간 지연, 추가 인력 필요 시 비용 증가</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>이사 비용 절감을 위한 전문가 팁</h3>
+      <ul>
+        <li><strong>짐 정리:</strong> 불필요한 짐은 미리 버리거나(폐기물 처리) 중고로 판매하여 짐의 양을 줄이는 것이 가장 확실한 비용 절감법입니다. 짐 1톤이 줄어들면 견적이 크게 낮아집니다.</li>
+        <li><strong>비수기 활용:</strong> 가능하면 2~3월이나 9~10월의 성수기를 피하고, 평일이나 6~8월의 비수기를 이용하면 비용을 절약할 수 있습니다.</li>
+        <li><strong>방문 견적 필수:</strong> 전화 견적은 오차가 크므로 반드시 여러 업체로부터 방문 견적을 받아 비교해야 합니다. 짐의 양과 특수 품목을 정확히 파악하여 추가 요금을 줄일 수 있습니다.</li>
+      </ul>
+    </section>
+
+    <section id="checklist">
+      <h2 id="checklist-anchor" class="anchor">성공적인 6톤 이사를 위한 필수 체크리스트 (2026년 기준)</h2>
+      <p>짐이 많은 6톤 이사는 체계적인 계획 없이는 큰 혼란을 초래할 수 있습니다. 이사 전/후로 반드시 확인해야 할 사항들을 정리했습니다. 이 체크리스트를 활용하여 꼼꼼하게 이사를 준비하세요.</p>
+
+      <h3>이사 2주 전: 사전 준비 및 계약 단계</h3>
+      <ol>
+        <li><strong>업체 선정 및 방문 견적 (최소 3개 이상):</strong> 6톤 이사는 업체별 서비스 범위와 견적 차이가 크므로, 적어도 3개 이상의 업체에서 방문 견적을 받고 비교합니다. 견적서에는 포함 항목(인력수, 차량 크기, 사다리차, 특수 품목)이 명확히 기재되어 있는지 확인합니다.</li>
+        <li><strong>이사 날짜 확정 및 계약:</strong> 이사 날짜가 확정되면 계약금을 지불하고 계약서를 작성합니다. 계약서에는 이사 일시, 장소, 비용, 추가 비용 발생 조건, 손해배상 책임 등을 명시해야 합니다.</li>
+        <li><strong>특수 품목 확인 및 사전 조율:</strong> 에어컨, 벽걸이 TV, 대형 가구(붙박이장, 돌침대 등)는 분해 및 설치 비용이 별도로 발생하므로, 반드시 계약 전 조율해야 합니다.</li>
+        <li><strong>폐기물 처리 계획:</strong> 버릴 가구나 가전제품은 미리 폐기물 처리 업체를 통해 배출하거나 지자체 스티커를 구매하여 처리합니다. 이사 당일 처리하려면 추가 비용이 발생합니다.</li>
+        <li><strong>행정처리 준비:</strong> 전입/확정일자 신고, 우편물 주소 변경, 공과금(전기, 가스, 수도) 정산 등을 미리 준비합니다.</li>
+      </ol>
+
+      <h3>이사 당일: 현장 관리 및 마무리</h3>
+      <ol>
+        <li><strong>귀중품 별도 보관:</strong> 현금, 통장, 인감, 보석류 등 귀중품은 반드시 고객이 직접 휴대하고 이동해야 합니다.</li>
+        <li><strong>포장 및 운반 확인:</strong> 짐이 포장되는 과정을 틈틈이 확인하고, 파손 위험이 높은 물건이나 중요 물품은 업체 직원에게 다시 한번 주지시킵니다.</li>
+        <li><strong>이사 완료 후 검수:</strong> 짐을 풀고 정리한 후, 파손된 물건이나 누락된 물건이 없는지 확인합니다. 파손 발생 시 현장에서 사진을 찍고 업체에 즉시 알립니다.</li>
+        <li><strong>잔금 처리 및 비용 정산:</strong> 추가 비용 발생 여부를 확인하고, 계약서에 명시된 금액과 일치하는지 확인 후 잔금을 지불합니다.</li>
+      </ol>
+      <div style="text-align:center; margin-top:30px;">
+        <a class="btn-cta" href="#contact">6톤 이사 견적 문의 및 체크리스트 받기</a>
+      </div>
+    </section>
+
+    <section id="regional-price">
+      <h2 id="regional-price-anchor" class="anchor">지역별 6톤 이사 비용 변동성과 광범위 키워드 분석</h2>
+      <p>6톤 이사 비용은 지역별 물가, 인건비, 경쟁 환경에 따라 다르게 형성됩니다. 특히 전국적인 광역시 단위 이사 비용을 비교하면 그 차이를 명확하게 알 수 있습니다. 수도권(서울, 경기, 인천)은 업체가 많아 경쟁이 치열하지만, 인건비가 높고 이사 수요가 많아 가격이 높게 형성되는 경향이 있습니다. 반면, 지방 소도시는 경쟁이 덜하지만 인프라 부족으로 인해 운송비가 증가할 수 있습니다.</p>
+
+      <h3>전국 주요 지역별 이사 키워드 분석</h3>
+      <p>이사 수요가 많은 전국 주요 지역 키워드는 다음과 같습니다. 6톤 이사는 30평형대 이상의 주택 이동이 많으므로, 신도시 및 대규모 아파트 단지가 밀집한 지역에서 수요가 높습니다.</p>
+      <p><strong>주요 지역별 6톤 이사 키워드:</strong></p>
+      <p><strong>수도권:</strong> 서울 강남구 포장이사, 서울 송파구 6톤 이사, 서울 서초구 6톤 이사, 경기 성남시 포장이사, 경기 분당구 6톤 이사, 경기 용인시 포장이사, 경기 수원시 포장이사, 경기 고양시(일산) 포장이사, 경기 화성시 동탄신도시 6톤 이사, 경기 평택시 고덕신도시 포장이사, 인천 송도신도시 6톤 이사.</p>
+      <p><strong>광역시:</strong> 부산 해운대구 포장이사, 대구 수성구 6톤 이사, 대전 유성구 포장이사, 광주 광산구 6톤 이사, 울산 남구 포장이사.</p>
+      <p><strong>그 외 지역:</strong> 세종시 6톤 이사, 강원도 강릉시 포장이사, 충청남도 천안시 6톤 이사, 전라북도 전주시 포장이사, 제주도 6톤 이사 비용.</p>
+
+      <h3>6톤 이사 관련 연관 키워드 분석</h3>
+      <p>검색 엔진에서 "6톤 이사"와 함께 많이 검색되는 키워드는 "이삿짐센터 가격비교", "포장이사 잘하는 곳", "이사 짐량 측정", "사다리차 비용", "에어컨 이전 설치 비용" 등입니다. 이는 고객들이 6톤 이사를 준비하며 가장 궁금해하는 부분(비용, 짐량, 특수 항목)을 반영합니다.</p>
+
+      <div class="keyword-cloud">
+        <span class="keyword">6톤 포장이사 비용</span> <span class="keyword">6톤 반포장이사</span> <span class="keyword">이사 견적 비교</span> <span class="keyword">이삿짐센터 추천</span> <span class="keyword">사다리차 비용</span> <span class="keyword">30평 이사</span> <span class="keyword">40평 이사</span> <span class="keyword">짐량 계산</span> <span class="keyword">이사 체크리스트</span> <span class="keyword">손없는날</span> <span class="keyword">에어컨 설치</span> <span class="keyword">붙박이장 분해</span> <span class="keyword">장거리 이사 비용</span>
+      </div>
+    </section>
+
+    <section id="faq">
+      <h2 id="faq-anchor" class="anchor">자주 묻는 질문 (FAQ)</h2>
+      <div class="faq-list">
+        <div class="faq-item">
+          <h3 class="faq-question">Q1: 6톤 이사와 5톤 이사의 짐량 차이는 무엇인가요?</h3>
+          <p class="faq-answer">A: 5톤 이사는 일반적으로 방 2개와 거실이 있는 20~30평대 아파트에 적합하며, 짐량이 5톤 차량 1대 분량입니다. 6톤 이사는 방 3~4개에 거실과 주방이 분리된 30~40평대 아파트나 주택에 적합하며, 짐량이 6톤 또는 5톤 차량 1대 + 1톤 차량 1대 분량입니다. 짐량이 많을수록 작업 인원과 시간이 증가하며 비용도 상승합니다.</p>
+        </div>
+        <div class="faq-item">
+          <h3 class="faq-question">Q2: 2026년 이사 성수기는 언제이며, 비용에 어떤 영향을 미치나요?</h3>
+          <p class="faq-answer">A: 일반적으로 이사 성수기는 2~3월과 9~10월이며, 이 기간에는 주말이나 손없는 날에 수요가 집중됩니다. 2026년에도 이사 성수기에는 비수기 대비 평균 20~30% 높은 비용이 책정될 수 있습니다. 특히 6톤 이상의 대규모 이사는 성수기에 예약이 일찍 마감되므로, 미리 준비하는 것이 중요합니다.</p>
+        </div>
+        <div class="faq-item">
+          <h3 class="faq-question">Q3: 6톤 포장이사 계약 시, 꼭 확인해야 할 특약 사항이 있나요?</h3>
+          <p class="faq-answer">A: 네, 계약서에 다음 사항을 반드시 포함해야 합니다. 1)<strong>손해배상 책임:</strong> 물품 파손 시 보상 범위 및 절차. 2)<strong>추가 비용 금지 조항:</strong> 견적서에 명시되지 않은 비용(사다리차 비용, 인건비 등) 추가 요구 금지. 3)<strong>특수 품목 처리:</strong> 에어컨, 벽걸이 TV 등 설치/분해 비용 및 책임 소재 명확화. 한국소비자원의 표준 이사 계약서를 참고하여 작성하는 것이 안전합니다. [cite: 한국소비자원, 이사 서비스 이용 피해 예방 가이드]</p>
+        </div>
+        <div class="faq-item">
+          <h3 class="faq-question">Q4: 6톤 이사 시 사다리차는 꼭 필요합니까?</h3>
+          <p class="faq-answer">A: 짐의 양이 많고 층수가 3층 이상인 경우, 사다리차를 사용하는 것이 일반적이며 안전합니다. 특히 대형 가구(소파, 냉장고 등)는 계단으로 운반 시 파손 위험이 크고 시간이 많이 소요됩니다. 엘리베이터 이사는 층수에 따라 엘리베이터 사용료가 부과되며, 이사 시간 지연의 원인이 될 수 있으므로 사다리차 비용과 비교하여 합리적인 선택을 해야 합니다.</p>
+        </div>
+        <div class="faq-item">
+          <h3 class="faq-question">Q5: 포장이사 업체 선택 시 신뢰성 확인 방법은?</h3>
+          <p class="faq-answer">A: 사업자 등록 여부, 이사화물 주선업 허가증 유무를 확인하세요. 허가업체는 법적으로 손해배상보험 가입이 의무화되어 있습니다. 또한, 이사 경험이 풍부한 업체인지, 후기나 평점이 좋은지 확인하고, 방문 견적을 통해 전문성을 직접 확인하는 것이 좋습니다.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <h2 id="contact-anchor" class="anchor">6톤 이사 비용 무료 견적 상담</h2>
+      <p>6톤 이사는 짐의 양이 많고 복잡하여 정확한 견적이 필수적입니다. 아래 양식을 작성해 주시면 전문가가 꼼꼼한 방문 견적을 통해 합리적인 이사 비용을 산출해 드립니다. 2026년 이사 계획을 지금부터 시작하세요.</p>
+
+      <form action="/submit" method="POST">
+        <div class="form-group">
+          <label for="name">이름<span style="color:red;">*</span></label>
+          <input type="text" id="name" name="name" required placeholder="예: 홍길동" />
+        </div>
+        <div class="form-group">
+          <label for="phone">연락처<span style="color:red;">*</span></label>
+          <input type="tel" id="phone" name="phone" required placeholder="010-1234-5678" pattern="[0-9\-]+" />
+        </div>
+        <div class="form-group">
+          <label for="current-address">현재 거주지 주소</label>
+          <input type="text" id="current-address" name="current_address" placeholder="예: 서울시 강남구" />
+        </div>
+        <div class="form-group">
+          <label for="move-date">이사 희망 날짜</label>
+          <input type="date" id="move-date" name="move_date" />
+        </div>
+        <div class="form-group">
+          <label for="move-type">이사 서비스 유형<span style="color:red;">*</span></label>
+          <select id="move-type" name="move_type" required>
+            <option value="">선택하세요</option>
+            <option value="6톤 포장이사">6톤 포장이사 (Full Service)</option>
+            <option value="6톤 반포장이사">6톤 반포장이사</option>
+            <option value="6톤 일반이사">6톤 일반이사</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="current-home-type">현 거주지 정보 (짐량 판단)</label>
+          <select id="current-home-type" name="current_home_type">
+            <option value="3룸 아파트">3룸 아파트 (30평대)</option>
+            <option value="4룸 아파트">4룸 아파트 (40평대)</option>
+            <option value="주택/빌라">주택/빌라</option>
+            <option value="오피스텔">오피스텔</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="floor-info">층수 및 사다리차 필요 여부</label>
+          <textarea id="floor-info" name="floor_info" rows="2" placeholder="예: 현 거주지 10층 엘리베이터, 이사갈 집 5층 사다리차 필요"></textarea>
+        </div>
+        <div class="form-group">
+          <label for="special-items">특수 짐 품목 (추가 비용 발생 가능)</label>
+          <textarea id="special-items" name="special_items" rows="3" placeholder="예: 에어컨(스탠드형), 벽걸이 TV, 대형 붙박이장, 피아노"></textarea>
+        </div>
+
+        <button type="submit" class="btn-cta">견적 문의 신청하기</button>
+      </form>
+    </section>
+
+    <section id="external-references">
+      <h2>신뢰할 수 있는 이사 관련 정보 출처</h2>
+      <p>6톤 이사 비용 및 관련 정보를 확인할 수 있는 신뢰성 있는 외부 사이트 목록입니다. 이사 계약 전 반드시 참고하여 피해를 예방하세요.</p>
+      <ul>
+        <li><a href="https://www.kca.go.kr/index.do" target="_blank">한국소비자원</a>: 이사 서비스 표준 약관 및 소비자 피해 구제 사례 확인.</li>
+        <li><a href="https://www.data.go.kr/index.do" target="_blank">공공데이터포털 (정부)</a>: 이사 업체 관련 통계 및 신고 현황 자료.</li>
+        <li><a href="https://namu.wiki/w/%ED%8F%AC%EC%9E%A5%EC%9D%B4%EC%82%AC" target="_blank">나무위키 - 포장이사</a>: 포장이사의 정의, 장단점, 주의사항 등에 대한 정보.</li>
+        <li><a href="https://www.law.go.kr/" target="_blank">법제처 국가법령정보센터</a>: 관련 법규 및 운송 약관 확인.</li>
+        <li><a href="https://www.korea.kr/news/policyNewsView.do?newsId=148889980" target="_blank">대한민국 정책브리핑</a>: 이사 피해 예방 및 계약 관련 정부 정책.</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2026 6톤 포장이사 견적 비교 센터. All rights reserved.</p>
+    <p>대표번호: <a href="tel:0311234567">031-123-4567</a> | 이메일: <a href="mailto:help@domain.com">help@domain.com</a></p>
+    <p>사업자등록번호: 123-45-67890</p>
+  </footer>
+
+  
